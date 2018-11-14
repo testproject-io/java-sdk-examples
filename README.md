@@ -27,11 +27,11 @@ You can download TestProject SDK for Java from the [Developers](https://app.test
 
 The best way to start developing automated tests with TestProject is by reviewing the source code of a basic test that performs a login and updates a profile form, expecting the save to succeed.
 
-* [Web](blob/master/Web/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test executed on [TestProject Demo](https://example.testproject.io/web/index.html) website.
-* [Android](blob/master/Android/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test executed on [TestProject Demo](https://github.com/testproject-io/android-demo-app) App for Android.
-* [iOS](blob/master/iOS/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test executed on [TestProject Demo](https://github.com/testproject-io/ios-demo-app) App for iOS.
+* [Web](Web/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test executed on [TestProject Demo](https://example.testproject.io/web/index.html) website.
+* [Android](Android/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test executed on [TestProject Demo](https://github.com/testproject-io/android-demo-app) App for Android.
+* [iOS](iOS/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test executed on [TestProject Demo](https://github.com/testproject-io/ios-demo-app) App for iOS.
 
-There is also a [Generic](Generic/Test/src/main/java/io/testproject/examples/sdk/java/tests/BasicTest.java) test, representing  a dummy scenario that can be automated.\
+There is also a [Generic](Generic/Test/src/main/java/io/testproject/examples/sdk/tests/BasicTest.java) test, representing  a dummy scenario that can be automated.\
 It can be used as a reference for real scenarios that automate a non-UI sequences (those that do not require a Selenium or Appium driver).
 
 ### Test Class
@@ -285,10 +285,10 @@ In addition, we will create step reports to separate the different stages of the
 
 See the relevant platform link for full source code:
 
-* [Web - Extended Test](blob/master/Web/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
-* [Android - Extended Test](blob/master/Android/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
-* [iOS - Extended Test](blob/master/iOS/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
-* [Generic - Extended Test](blob/master/Generic/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
+* [Web - Extended Test](Web/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
+* [Android - Extended Test](Android/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
+* [iOS - Extended Test](iOS/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
+* [Generic - Extended Test](Generic/Test/src/main/java/io/testproject/examples/sdk/tests/ExtendedTest.java)
 
 #### Test Annotations
 
@@ -342,11 +342,11 @@ Create an Addon in the [Addons](https://app.testproject.io/#/addons/account) scr
 Lets review a simple Addon with a **ClearFields** action that clears a form.
 It can be used on the login form in TestProject Demo website or mobile App:
 
-* [Web](blob/master/Web/Addon/src/main/java/io/testproject/examples/sdk/java/actions/ClearFields.java)
-* [Android](blob/master/Android/Addon/src/main/java/io/testproject/examples/sdk/java/actions/ClearFields.java)
-* [iOS](blob/master/iOS/Addon/src/main/java/io/testproject/examples/sdk/java/actions/ClearFields.java)
+* [Web - Action](Web/Addon/src/main/java/io/testproject/examples/sdk/actions/ClearFieldsAction.java)
+* [Android - Action](Android/Addon/src/main/java/io/testproject/examples/sdk/actions/ClearFieldsAction.java)
+* [iOS - Action](iOS/Addon/src/main/java/io/testproject/examples/sdk/actions/ClearFieldsAction.java)
 
-There is also a [Generic](Generic/Addon/src/main/java/io/testproject/examples/sdk/java/actions/Addition.java) action, representing  a dummy scenario that can be automated.\
+There is also a [Generic](Generic/Addon/src/main/java/io/testproject/examples/sdk/actions/AdditionAction.java) action, representing  a dummy scenario that can be automated.\
 It can be used as a reference for real scenarios that automate a non-UI (those hat do not require a Selenium or Appium driver) actions.
 
 #### Action Class
@@ -472,6 +472,7 @@ this.result = a + b;
 </p>
 </details>
 
+
 Actions run in context of a test and assume that required UI state is already in place.\
 When the action will be used in a test it will be represented as a single step, usually preceded by other steps.\
 However, when debugging it locally, preparations should be done using the *Runner* class to start from expected UI state:
@@ -484,7 +485,7 @@ However, when debugging it locally, preparations should be done using the *Runne
 ClearFields action = new ClearFields();
 
 // Prepare state
-WebDriver driver = runner.getDriver(action);
+WebDriver driver = runner.getDriver();
 driver.navigate().to("https://example.testproject.io/web/");
 driver.findElement(By.id("name")).sendKeys("John Smith");
 driver.findElement(By.id("password")).sendKeys("12345");
@@ -504,7 +505,7 @@ runner.run(action);
 ClearFields action = new ClearFields();
 
 // Prepare state
-AndroidDriver driver = runner.getDriver(action);
+AndroidDriver driver = runner.getDriver();
 driver.findElement(By.id("name")).sendKeys("John Smith");
 driver.findElement(By.id("password")).sendKeys("12345");
 
@@ -523,7 +524,7 @@ runner.run(action);
 ClearFields action = new ClearFields();
 
 // Prepare state
-IOSDriver driver = runner.getDriver(action);
+IOSDriver driver = runner.getDriver();
 driver.findElement(By.id("name")).sendKeys("John Smith");
 driver.findElement(By.id("password")).sendKeys("12345");
 
@@ -559,7 +560,12 @@ All code examples, have JUnit tests that use *Runner* to debug the automation lo
 Actions can be element based, when their scope is limited to operations on a specific element and not the whole DOM.\
 This allows creating smart crowd based addons for industry common elements and libraries.
 
-*TypeRandomPhone* is an example of an [Element Action](Addon/src/main/java/io/testproject/examples/sdk/java/TypeRandomPhone.java).\
+*TypeRandomPhone* is an example of an Element Action:
+
+* [Web - Element Action](Web/Addon/src/main/java/io/testproject/examples/sdk/actions/TypeRandomPhoneAction.java)
+* [Android - Element Action](Android/Addon/src/main/java/io/testproject/examples/sdk/actions/TypeRandomPhoneAction.java)
+* [iOS - Element Action](iOS/Addon/src/main/java/io/testproject/examples/sdk/actions/TypeRandomPhoneAction.java)
+
 This action generates a random phone number based on provided country code and max digits amount, typing it in a text field:
 
 ```java
@@ -640,7 +646,7 @@ It is up to the Action developer how to narrow and limit the list of element typ
 
 One of the greatest features of the TestProject environment is the ability to execute a code written by someone else.\
 It can be your account colleagues writing actions that you can reuse, or TestProject community users.\
-Developer must download a binary file with the proxy class for the Action he wants to execute.\
+Developer must download a binary file with the proxy class for the Action he wants to execute.
 
 Assuming your account member uploaded the example Addon, named it ***Example*** and you want to reuse it's code your Test.\
 To do so, you can download it's proxy JAR and use it like this:
@@ -658,9 +664,10 @@ StepExecutionResult result = helper.executeProxy(clearFieldsAction);
 
 See examples:
 
-* [Web - Proxy Test](blob/master/Web/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
-* [Android - Proxy Test](blob/master/Android/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
-* [iOS - Proxy Test](blob/master/iOS/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
+* [Web - Proxy Test](Web/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
+* [Android - Proxy Test](Android/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
+* [iOS - Proxy Test](iOS/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
+* [Generic - Proxy Test](Generic/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
 
 ## Packaging
 
