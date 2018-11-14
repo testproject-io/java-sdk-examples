@@ -661,6 +661,7 @@ See examples:
 * [Web - Proxy Test](Web/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
 * [Android - Proxy Test](Android/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
 * [iOS - Proxy Test](iOS/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
+* [Generic - Proxy Test](Generic/Test/src/main/java/io/testproject/examples/sdk/tests/ProxyTest.java)
 
 ## Packaging
 
