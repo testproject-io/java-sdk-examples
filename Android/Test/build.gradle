@@ -1,0 +1,53 @@
+group 'io.testproject'
+version '1.1'
+
+apply plugin: 'java'
+
+// If necessary, update the location of TestProject SDK JAR file
+def TP_SDK = '../../io.testproject.sdk.java.jar'
+
+compileJava.options.encoding = 'UTF-8'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+// Configurations
+configurations {
+    tpsdk
+    compile.extendsFrom tpsdk
+}
+
+// JAR Task
+jar {
+    assert file("${TP_SDK}").exists(): "TestProject SDK JAR file was not found, please update the TP_SDK variable"
+    archiveName "${rootProject.name}-${version}.jar"
+    dependsOn configurations.runtime
+    from {
+        // Removes TestProject SDK
+        (configurations.runtime - configurations.tpsdk).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    // Extract SDK version
+    from {
+        (configurations.tpsdk).collect {
+            zipTree(it).matching {
+                include 'testproject-sdk.properties'
+            }
+        }
+    }
+}
+
+dependencies {
+    tpsdk files("${TP_SDK}")
+    compile files('src/main/proxy/android-example-addon.proxy.jar')
+
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntime 'org.junit.platform:junit-platform-runner:1.3.1'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testRuntime 'org.junit.vintage:junit-vintage-engine:5.3.1'
+}

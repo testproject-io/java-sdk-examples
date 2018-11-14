@@ -1,0 +1,43 @@
+<assembly
+        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+    <id>jar-with-dependencies</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <!--Assemble all runtime dependencies-->
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <unpack>true</unpack>
+            <scope>runtime</scope>
+        </dependencySet>
+        <!--Extract TestProject SDK Properties-->
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <scope>system</scope>
+            <unpack>true</unpack>
+            <includes>
+                <include>io.testproject:java-sdk</include>
+            </includes>
+            <unpackOptions>
+                <includes>
+                    <include>testproject-sdk.properties</include>
+                </includes>
+            </unpackOptions>
+        </dependencySet>
+        <!--Exclude TestProject SDK from the resulting JAR-->
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <unpack>true</unpack>
+            <scope>system</scope>
+            <excludes>
+                <exclude>io.testproject:java-sdk</exclude>
+            </excludes>
+        </dependencySet>
+    </dependencySets>
+</assembly>
