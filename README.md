@@ -23,6 +23,31 @@ TestProject Agent can be downloaded from [Agents](https://app.testproject.io/#/a
 
 You can download TestProject SDK for Java from the [Developers](https://app.testproject.io/#/developers) page and reference it in your project.
 
+#### Installing SDK
+
+To use TestProject SDK you have to add it as a reference to your project.\
+Here are some examples for how it should be done using Maven or Gradle.
+
+Maven:
+
+```xml
+<dependency>
+    <groupId>io.testproject</groupId>
+    <artifactId>java-sdk</artifactId>
+    <version>1.0</version>
+    <systemPath>/path/to/sdk/io.testproject.sdk.java.jar</systemPath>
+    <scope>system</scope>
+</dependency>
+```
+
+Gradle:
+
+```groovy
+ compile files("/path/to/sdk/io.testproject.sdk.java.jar")
+```
+
+Refer to _pom.xml_ and _build.gradle_ files in the provided examples for more details.
+
 ## Test Development
 
 The best way to start developing automated tests with TestProject is by reviewing the source code of a basic test that performs a login and updates a profile form, expecting the save to succeed.
