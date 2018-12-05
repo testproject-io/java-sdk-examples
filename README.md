@@ -317,11 +317,12 @@ See the relevant platform link for full source code:
 
 #### Test Annotations
 
-TestProject SDK provides annotations to describe the test and it's parameters:
+TestProject SDK provides annotations to describe the test and its parameters:
 
  1. The ***Test*** annotation is used to better describe the Test and define how it will appear later in TestProject UI:
     * **name** - The name of the test (if omitted, the name of the class will be used).
     * **description** - A description of the test which is shown in various places in TestProject platform (e.g. reporting dashboard). The description may contain placeholders {{propertyName}} that will be changed dynamically according to test parameters.
+    * **version** - A version string which is used for future reference.
  1. The ***Parameter*** annotation is used to better describe your Test inputs and outputs, in the example above there are two inputs - *url* and *expectedTitle*.
     * **description** - The description of the parameter
     * **direction** - Defines the parameter as an *input* (default if omitted) or an *output* parameter. An *input* parameter will receive values when the test is executed while the *output* parameter value will be retrieved at the end of test execution (and can be used in following steps later on in the automation scenario).
@@ -385,6 +386,8 @@ The *execute()* method returns *ExecutionResult* enum which can be **PASSED** or
 <details><summary>Web Action</summary>
 <p>
 
+ClearFields class implements the *WebAction* interface:
+
 ```java
 @Action(name = "Clear Fields")
 public class ClearFields implements WebAction
@@ -423,6 +426,8 @@ for (WebElement form : driver.findElements(By.tagName("form"))) {
 <details><summary>Android Action</summary>
 <p>
 
+ClearFields class implements the *AndroidAction* interface:
+
 ```java
 @Action(name = "Clear Fields")
 public class ClearFields implements AndroidAction
@@ -447,6 +452,8 @@ for (AndroidElement element : helper.getDriver().findElements(By.className("andr
 
 <details><summary>iOS Action</summary>
 <p>
+
+ClearFields class implements the *IOSAction* interface:
 
 ```java
 @Action(name = "Clear Fields")
@@ -476,6 +483,8 @@ for (IOSElement element : helper.getDriver().findElements(By.className("XCUIElem
 
 <details><summary>Generic Action</summary>
 <p>
+
+Addition class implements the *GenericAction* interface:
 
 ```java
 @Action(name = "Addition", description = "Add {{a}} to {{b}}")
@@ -575,7 +584,7 @@ TestProject SDK provides annotations to describe the action:
 
 > NOTE: Unlike tests, actions cannot use assertions because an action is a single generic reusable unit.
 
-### Debugging / Running Action
+### Debugging / Running Actions
 
 To debug or run the action locally, you will have to use the *Runner* class from TestProject SDK.
 All code examples, have JUnit tests that use *Runner* to debug the automation locally.
