@@ -14,7 +14,7 @@ public class Tests {
     private static final String DEV_TOKEN = "YOUR_DEV_TOKEN";
     private static final String DEVICE_UDID = "IOS_DEVICE_UDID";
     private static final String DEVICE_NAME = "IOS_DEVICE_NAME";
-    private static final String BUNDLE_ID = "io.testproject.demo";
+    private static final String BUNDLE_ID = "io.testproject.Demo";
 
     private static Runner runner;
 
