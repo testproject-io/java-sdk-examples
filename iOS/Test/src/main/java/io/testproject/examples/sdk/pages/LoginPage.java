@@ -2,18 +2,18 @@ package io.testproject.examples.sdk.pages;
 
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.testproject.java.sdk.v2.drivers.IOSDriver;
 import io.testproject.java.sdk.v2.support.PageFactory;
 
 public class LoginPage {
 
     private IOSDriver driver;
-    @iOSFindBy(id = "name")
+    @iOSXCUITFindBy(id = "name")
     private IOSElement nameElement;
-    @iOSFindBy(id = "password")
+    @iOSXCUITFindBy(id = "password")
     private IOSElement passwordElement;
-    @iOSFindBy(id = "login")
+    @iOSXCUITFindBy(id = "login")
     private IOSElement loginElement;
 
     public LoginPage() {

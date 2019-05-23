@@ -9,6 +9,7 @@ import io.testproject.java.sdk.v2.drivers.AndroidDriver;
 import io.testproject.java.sdk.v2.support.PageFactory;
 import org.openqa.selenium.By;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class ProfilePage {
@@ -38,7 +39,7 @@ public class ProfilePage {
 
     public ProfilePage(AndroidDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver, 10, TimeUnit.SECONDS), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)),this);
     }
 
     public boolean isDisplayed() {

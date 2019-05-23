@@ -2,31 +2,31 @@ package io.testproject.examples.sdk.pages;
 
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.testproject.java.sdk.v2.drivers.IOSDriver;
 import io.testproject.java.sdk.v2.support.PageFactory;
 import org.openqa.selenium.By;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class ProfilePage {
 
     private IOSDriver driver;
-    @iOSFindBy(id = "greetings")
+    @iOSXCUITFindBy(id = "greetings")
     private IOSElement greetingsElement;
-    @iOSFindBy(id = "logout")
+    @iOSXCUITFindBy(id = "logout")
     private IOSElement logoutElement;
-    @iOSFindBy(id = "country")
+    @iOSXCUITFindBy(id = "country")
     private IOSElement countryElement;
-    @iOSFindBy(id = "address")
+    @iOSXCUITFindBy(id = "address")
     private IOSElement addressElement;
-    @iOSFindBy(id = "email")
+    @iOSXCUITFindBy(id = "email")
     private IOSElement emailElement;
-    @iOSFindBy(id = "phone")
+    @iOSXCUITFindBy(id = "phone")
     private IOSElement phoneElement;
-    @iOSFindBy(id = "save")
+    @iOSXCUITFindBy(id = "save")
     private IOSElement saveElement;
-    @iOSFindBy(id = "saved")
+    @iOSXCUITFindBy(id = "saved")
     private IOSElement savedElement;
 
     public ProfilePage() {
@@ -34,7 +34,7 @@ public class ProfilePage {
 
     public ProfilePage(IOSDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver, 10, TimeUnit.SECONDS), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(10)),this);
     }
 
     public boolean isDisplayed() {

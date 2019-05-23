@@ -59,8 +59,8 @@ public class Actions {
         // Prepare state
         driver.findElement(By.id("name")).sendKeys("John Smith");
         driver.findElement(By.id("password")).sendKeys("12345");
-        driver.findElement(By.id("login")).click();
         driver.hideKeyboard();
+        driver.findElement(By.id("login")).click();
 
         // Set action parameters
         action.countryCode = "1";
