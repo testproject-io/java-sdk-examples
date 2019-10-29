@@ -9,10 +9,6 @@ TestProject provides a unified test automation SDK with support for Android, iOS
 TestProject is OS agnostic and can run on Windows, Linux or Mac.
 It is a full stack automation framework with capabilities that allow automation test management, remote and local test execution, job scheduling, reporting dashboards, collaboration and more.
 
-## JDK / JRE
-
-<span style="color:red">Please use JDK 8, higher versions are not yet supported.</span>
-
 ## Preparations
 
 To kick-off automation development with TestProject, it is necessary to have an active TestProject account and the TestProject Agent installed.\
