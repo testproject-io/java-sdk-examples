@@ -20,6 +20,10 @@ configurations {
     compile.extendsFrom tpsdk
 }
 
+test {
+    useJUnitPlatform()
+}
+
 // JAR Task
 jar {
     assert file("${TP_SDK}").exists(): "TestProject SDK JAR file was not found, please update the TP_SDK variable"
