@@ -2,7 +2,8 @@ package io.testproject.examples.sdk.pages;
 
 
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.android.AndroidKeyCode;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.testproject.java.sdk.v2.drivers.AndroidDriver;
@@ -64,7 +65,7 @@ public class ProfilePage {
 
     public void hideKeyboardIfVisible() {
         if (keyboard != null) {
-            driver.pressKeyCode(AndroidKeyCode.KEYCODE_ESCAPE);
+            driver.pressKey(new KeyEvent(AndroidKey.ESCAPE));
         }
     }
 
