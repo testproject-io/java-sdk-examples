@@ -82,3 +82,6 @@ manifest.json
 **/build/**
 gradlew
 gradlew.bat
+
+# Ignore target maven build folder on any hierarchy
+**/target
