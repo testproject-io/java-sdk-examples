@@ -7,25 +7,25 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ProfilePage {
 
-    @FindBy(id = "logout")
+    @FindBy(css = "#logout")
     private WebElement logoutElement;
 
-    @FindBy(id = "country")
+    @FindBy(css = "#country")
     private WebElement countryElement;
 
-    @FindBy(id = "address")
+    @FindBy(css = "#address")
     private WebElement addressElement;
 
-    @FindBy(id = "email")
+    @FindBy(css = "#email")
     private WebElement emailElement;
 
-    @FindBy(id = "phone")
+    @FindBy(css = "#phone")
     private WebElement phoneElement;
 
-    @FindBy(id = "save")
+    @FindBy(css = "#save")
     private WebElement saveElement;
 
-    @FindBy(id = "saved")
+    @FindBy(css = "#saved")
     private WebElement savedElement;
 
     public boolean isDisplayed() {

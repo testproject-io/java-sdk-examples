@@ -5,13 +5,13 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
 
-    @FindBy(id = "name")
+    @FindBy(css = "#name")
     private WebElement nameElement;
 
-    @FindBy(id = "password")
+    @FindBy(css = "#password")
     private WebElement passwordElement;
 
-    @FindBy(id = "login")
+    @FindBy(css = "#login")
     private WebElement loginElement;
 
     public boolean isDisplayed() {
